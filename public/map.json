@@ -67,7 +67,7 @@
         {
          "draworder":"topdown",
          "id":3,
-         "name":"Boundaries",
+         "name":"boundaries",
          "objects":[
                 {
                  "height":320,
@@ -159,17 +159,39 @@
                  "width":287.382951653944,
                  "x":1.33333333333333,
                  "y":206.662745098039
-                }, 
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":4,
+         "name":"spawn",
+         "objects":[
                 {
                  "height":0,
-                 "id":14,
-                 "name":"spawn",
+                 "id":17,
+                 "name":"player",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":25.3333333333333,
-                 "y":200.666666666667
+                 "x":25,
+                 "y":197
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":816,
+                 "y":404
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -177,8 +199,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":4,
- "nextobjectid":17,
+ "nextlayerid":5,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

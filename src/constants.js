@@ -1,2 +1,2 @@
 // Contain Constants for our code base
-export const scaleFactor = 4;
+export const scaleFactor = 2;
