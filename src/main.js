@@ -61,7 +61,7 @@ k.scene("main", async () => {
             
         }
        
-        if (layer.name == "spawn") {
+        else if (layer.name == "spawn") {
             k.add(player);
             for (const entity of layer.objects) {
                 if (entity.name == "player") {
