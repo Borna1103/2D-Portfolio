@@ -15,23 +15,26 @@ k.loadSprite("map", "./map.png");
 k.scene("main", async () => {
     const mapData = await (await fetch("./map.json")).json();
     const layers = mapData.layers;
+
+    // Map Creation
     const map = k.add([
         k.sprite("map"),
         k.pos(0),
         k.scale(scaleFactor),
     ])
 
+    // Player Details
     const player = k.make([
         k.sprite("player", {anim: "idle"}),
         k.body(),
-        k.anchor("center"),
-        k.pos(),
+        k.area(),
+        k.pos(0,400),
         k.scale(scaleFactor),
         {
             speed: 250,
             direction: "right"
         },
-        k.setGravity(16),
+        k.setGravity(600),
         "player",
     ])
 
@@ -45,14 +48,14 @@ k.scene("main", async () => {
                     k.area({
                         shape: new k.Rect(k.vec2(0), boundary.width, boundary.height),
                     }),
-                    k,body({ isStatic: true}),
+                    k.body({ isStatic: true}),
                     k.pos(boundary.x, boundary.y),
                     boundary.name
                 ])
 
                 if (boundary.name) {
                     player.onCollide(boundary.name, () => {
-                        displayDialogue("test");
+                        
                     
                     });
                     
@@ -61,11 +64,10 @@ k.scene("main", async () => {
             
         }
        
+        // Positions Spawn Reletive to the Screen
         else if (layer.name == "spawn") {
-            k.add(player);
             for (const entity of layer.objects) {
                 if (entity.name == "player") {
-                    
                     player.pos = k.vec2(
                         (map.pos.x + entity.x) * scaleFactor,
                         (map.pos.y + entity.y) * scaleFactor
@@ -76,24 +78,46 @@ k.scene("main", async () => {
         }
     }
     
+    // Camera Position
     k.onUpdate(() => {
-        k.camPos(player.pos.x, player.pos.y + 100);
+        k.camPos(player.pos.x + 500, 500);
     });
 
-    k.onKeyPressRepeat("w", () => {
-        if (player.isGrounded()){
-            player.jump();
+    // Movement to Player
+    k.onKeyPress("space" , () => {
+        if (player.isGrounded()) {
+            player.jump(400);
         }
     });
 
-    k.onKeyPressRepeat("a", () => {
-        player.move(LEFT, player.speed);
+    k.onKeyPress("w", () => {
+        if (player.isGrounded()){
+            player.jump(400);
+        }
+    });
+
+    k.onKeyPress("a", () => {
         player.play("run");
     });
 
-    k.onKeyPressRepeat("d", () => {
-        player.move(RIGHT, player.speed);
+    k.onKeyPress("d", () => {
         player.play("run");
+    })
+    k.onKeyDown("a", () => {
+        player.move(-300, 0);
+    });
+
+    k.onKeyDown("d", () => {
+        player.move(300, 0);
+    });
+
+    k.onKeyRelease( () => {
+        player.play("idle");
+    });
+
+
+    k.onKeyPress("r" , () => {
+        k.go("main");
     });
 });
 
