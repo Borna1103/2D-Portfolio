@@ -86,13 +86,13 @@ k.scene("main", async () => {
     // Movement to Player
     k.onKeyPress("space" , () => {
         if (player.isGrounded()) {
-            player.jump(400);
+            player.jump(420);
         }
     });
 
     k.onKeyPress("w", () => {
         if (player.isGrounded()){
-            player.jump(400);
+            player.jump(420);
         }
     });
 
