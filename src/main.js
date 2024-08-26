@@ -4,6 +4,8 @@ import "./sprites.js";
 import "./sounds.js";
 import { displayDialogue } from "./utils.js";
 
+
+
 k.scene("main", async () => {
     const mapData = await (await fetch("./map.json")).json();
     const layers = mapData.layers;
