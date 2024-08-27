@@ -39,7 +39,7 @@ jobs:
           # Upload entire repository
           path: '.'
       - run: npm ci
-      - run: npm test
+      - run: npm run
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
