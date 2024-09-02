@@ -4,7 +4,7 @@ import enemies from "../public/Enemies.png"
 
 
 // Map Sprite
-k.loadSprite("map", map);
+k.loadSprite("map",  "../public/map.png");
 
 // WASD Controlls
 // k.loadSprite("wKey", "./wasd.png", {
@@ -17,7 +17,7 @@ k.loadSprite("map", map);
 
 
 // Main Character Sprite
-k.loadSprite("player", enemies , { 
+k.loadSprite("player", "../public/Enemies.png" , { 
     sliceX: 14,
     sliceY: 24,
     anims: {
