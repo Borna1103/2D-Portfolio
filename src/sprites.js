@@ -1,4 +1,4 @@
-import { k } from "./kaboomCtx";
+import { k } from "./kaboomCtx.js";
 
 
 // Map Sprite
