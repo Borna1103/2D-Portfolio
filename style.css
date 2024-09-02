@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: monogram;
-    src: url(monogram.ttf)
+    src: url(public/monogram.ttf)
 }
 
 body {
