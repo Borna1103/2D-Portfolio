@@ -1,6 +1,5 @@
 import { k } from "./kaboomCtx.js";
-import map from "../public/map.png";
-import enemies from "../public/Enemies.png"
+
 
 
 // Map Sprite

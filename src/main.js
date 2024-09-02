@@ -3,7 +3,7 @@ import { k } from "./kaboomCtx.js";
 import "./sprites.js";
 import "./sounds.js";
 import { displayDialogue } from "./utils.js";
-import map from "../public/map.json";
+
 
 
 
