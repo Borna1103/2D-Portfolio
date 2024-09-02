@@ -7,7 +7,7 @@ import { displayDialogue } from "./utils.js";
 
 
 k.scene("main", async () => {
-    const mapData = await (await fetch("../public/map.json")).json();
+    const mapData = await (await fetch("./public/map.json")).json();
     const layers = mapData.layers;
     var spawnpoint = k.vec2(0,0);
     var isFlipped = false;
