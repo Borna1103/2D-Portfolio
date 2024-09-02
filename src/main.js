@@ -1,5 +1,5 @@
-import { scaleFactor } from "./constants";
-import { k } from "./kaboomCtx";
+import { scaleFactor } from "./constants.js";
+import { k } from "./kaboomCtx.js";
 import "./sprites.js";
 import "./sounds.js";
 import { displayDialogue } from "./utils.js";
