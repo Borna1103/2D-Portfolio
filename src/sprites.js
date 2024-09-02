@@ -1,5 +1,6 @@
 import { k } from "./kaboomCtx.js";
 import map from "../public/map.png";
+import enemies from "../public/Enemies.png"
 
 
 // Map Sprite
@@ -16,7 +17,7 @@ k.loadSprite("map", map);
 
 
 // Main Character Sprite
-k.loadSprite("player", "public/Enemies.png" , { 
+k.loadSprite("player", enemies , { 
     sliceX: 14,
     sliceY: 24,
     anims: {

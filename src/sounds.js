@@ -1,7 +1,10 @@
 import { k } from "./kaboomCtx.js";
+import ambient from "../public/ambient.wav";
+import walkingOnGrass from "../public/walkingOnGrass.wav";
+import walkingOnPavement from "../public/walkingOnPavement.wav";
 
-k.loadSound("music", "public/ambient.wav");
+k.loadSound("music", ambient);
 
-k.loadSound("walkingOnGrass", "public/walkingOnGrass.wav");
+k.loadSound("walkingOnGrass", walkingOnGrass);
 
-k.loadSound("walkingOnPavement", "public/walkingOnPavement.wav");
+k.loadSound("walkingOnPavement", walkingOnPavement);

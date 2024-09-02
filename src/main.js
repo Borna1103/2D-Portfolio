@@ -3,11 +3,12 @@ import { k } from "./kaboomCtx.js";
 import "./sprites.js";
 import "./sounds.js";
 import { displayDialogue } from "./utils.js";
+import map from "../public/map.json";
 
 
 
 k.scene("main", async () => {
-    const mapData = await (await fetch("public/map.json")).json();
+    const mapData = await (await fetch("../public/map.json")).json();
     const layers = mapData.layers;
     var spawnpoint = k.vec2(0,0);
     var isFlipped = false;
