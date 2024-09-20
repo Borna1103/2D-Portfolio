@@ -3,7 +3,7 @@ import { k } from "./kaboomCtx.js";
 
 
 // Map Sprite
-k.loadSprite("map",  "map.png");
+k.loadSprite("map",  "./map.png");
 
 // WASD Controlls
 // k.loadSprite("wKey", "./wasd.png", {
@@ -16,7 +16,7 @@ k.loadSprite("map",  "map.png");
 
 
 // Main Character Sprite
-k.loadSprite("player", "Enemies.png" , { 
+k.loadSprite("player", "./Enemies.png" , { 
     sliceX: 14,
     sliceY: 24,
     anims: {
