@@ -5,7 +5,7 @@ import "./sounds.js";
 import { displayDialogue } from "./utils.js";
 
 
-
+k.loadSprite("map",  "./map.png");
 
 k.scene("main", async () => {
     const mapData = await (await fetch("../public/map.json")).json();
