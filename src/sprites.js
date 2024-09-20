@@ -4,7 +4,7 @@ import { k } from "./kaboomCtx.js";
 
 // Map Sprite
 
-
+k.loadSprite("map",  "./public/map.png");
 // WASD Controlls
 // k.loadSprite("wKey", "./wasd.png", {
 //     sliceX: 12,
@@ -16,7 +16,7 @@ import { k } from "./kaboomCtx.js";
 
 
 // Main Character Sprite
-k.loadSprite("player", "./Enemies.png" , { 
+k.loadSprite("player", "./public/Enemies.png" , { 
     sliceX: 14,
     sliceY: 24,
     anims: {
