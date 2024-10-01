@@ -89,10 +89,10 @@ k.scene("main", async () => {
     // Camera Position
     k.onUpdate(() => {
         if(player.pos.x <= 960 - 500){
-            k.camPos(960, 480);
+            k.camPos(window.innerWidth/2, 480);
         }
         else{
-            k.camPos(player.pos.x + 500, 480);
+            k.camPos(player.pos.x + window.innerWidth/2 - 450, 480);
         }
 
     });
@@ -111,47 +111,63 @@ k.scene("main", async () => {
 
     k.onCollide("player", "github", () => {
         player.inDialogue = true;
-        displayDialogue("Here is my GitHub link: ", () => (player.inDialogue = false));
+        displayDialogue("Here is my GitHub link: https://github.com/Borna1103", () => (player.inDialogue = false));
     })
     k.onCollide("player", "linkdin", () => {
         player.inDialogue = true;
-        displayDialogue("Here is my Linkdin link:", () => (player.inDialogue = false));
+        displayDialogue("Here is my Linkdin link: https://www.linkedin.com/in/borna-hemmaty/", () => (player.inDialogue = false));
     })
 
     // Controlls
     k.onKeyPress("space" , () => {
-        if (player.isGrounded()) {
+        if (player.isGrounded() && !player.inDialogue) {
             player.jump(800);
         }
     });
 
     k.onKeyPress("w", () => {
-        if (player.isGrounded()){
+        if (player.isGrounded() && !player.inDialogue){
             player.jump(800);
+
+            k.play("jump", {
+                volume: 0.005,
+                speed: 2
+            });
         }
+
+        
     });
 
     k.onKeyPress("a", () => {
-        player.play("runRight");
-        if(!isFlipped){
-            isFlipped = true;
-            player.flipX = true;
+        if(!player.inDialogue){
+            player.play("runRight");
+            if(!isFlipped){
+                isFlipped = true;
+                player.flipX = true;
+            }
         }
+        
     });
 
     k.onKeyPress("d", () => {
-        player.play("runLeft");
-        if(isFlipped){
-            isFlipped = false;
-            player.flipX = false;
+        if(!player.inDialogue){
+            player.play("runLeft");
+            if(isFlipped){
+                isFlipped = false;
+                player.flipX = false;
+            }
         }
     })
     k.onKeyDown("a", () => {
-        player.move(-300, 0);
+        if(!player.inDialogue){
+            player.move(-300, 0);
+        }
     });
 
     k.onKeyDown("d", () => {
-        player.move(300, 0);
+        if(!player.inDialogue){
+            player.move(300, 0);
+        }
     });
 
     k.onKeyPress("r" , () => {
@@ -166,10 +182,7 @@ k.scene("main", async () => {
         player.play("idle");
     });
 
-    k.play("music", {
-            volume: 0.01,
-            loop:true
-        });
+   
 });
 
 k.go("main");

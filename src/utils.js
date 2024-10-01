@@ -5,7 +5,7 @@ export function displayDialogue(text, onDisplayEnd) {
 
     const dialogue = document.getElementById("dialogue");
     dialogueUI.style.display = "block";
-    dialogue.innerHTML = text
+    dialogue.innerHTML = text 
 
     const closeBtn = document.getElementById("close");
 
