@@ -13,13 +13,27 @@ export function displayDialogue(text, onDisplayEnd) {
         onDisplayEnd();
         dialogueUI.style.display = "none";
         dialogue.innerHTML = "";
-        clearInterval(intervalRef);
+    
+
+        document.removeEventListener("keydown", onKeyDown);
         closeBtn.removeEventListener("click", onCloseBtnClick);
     }
 
+    function onKeyDown(e) {
+        if (e.key === "Escape") {
+            onCloseBtnClick();
+        }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
     closeBtn.addEventListener("click", onCloseBtnClick);
 
 }
+
+
+
+
+
 
 
 

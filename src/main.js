@@ -26,7 +26,7 @@ k.scene("main", async () => {
         k.sprite("player", {anim: "idle"}),
         k.body(),
         k.area(),
-        k.pos(0,400),
+        k.pos(25 * scaleFactor, 200* scaleFactor),
         k.scale(scaleFactor),
         {
             speed: 250,
@@ -37,12 +37,23 @@ k.scene("main", async () => {
         "player",
     ])
 
+    const npc = k.make([
+        k.sprite("bee", {anim: "idle"}),
+        k.pos(0, 400),
+        k.scale(scaleFactor),
+        "bee"
+    ]) 
+
+    npc.flipX = true;
+
     // const wKey = map.add([
     //     k.sprite("wKey", {anim: "flicker"}),
     //     k.pos(16, 16),
     //     k.scale(0.5),
     //     "wKey",
     // ])
+
+   
 
 
     // Bounderies Set Up
@@ -73,6 +84,14 @@ k.scene("main", async () => {
                     spawnpoint = player.pos;
                     k.add(player);
                 }
+                else if (entity.name == "projects")
+                {
+                    npc.pos = k.vec2(
+                        (map.pos.x + entity.x) * scaleFactor,
+                        (map.pos.y + entity.y) * scaleFactor
+                    )
+                    k.add(npc)
+                }
                 else{
                     map.add([
                         k.area({
@@ -85,15 +104,22 @@ k.scene("main", async () => {
             }
         }
     }
+
+    
     
     // Camera Position
     k.onUpdate(() => {
         if(player.pos.x <= 960 - 500){
             k.camPos(window.innerWidth/2, 480);
         }
+        else if (player.pos.x >= (1600  - 490) * scaleFactor) {
+        
+            k.camPos(1600 * scaleFactor - window.innerWidth / 2, 480);
+        }
         else{
             k.camPos(player.pos.x + window.innerWidth/2 - 450, 480);
         }
+
 
     });
 
@@ -102,6 +128,8 @@ k.scene("main", async () => {
         player.pos = spawnpoint;
     })
 
+    
+
     k.onCollide("player", "welcome", () => {
         k.onKeyPress("e", () => {
             player.inDialogue = true;
@@ -109,13 +137,33 @@ k.scene("main", async () => {
         })
     })
 
+    k.onCollide("player", "projects", () => {
+        k.onKeyPress("e", () => {
+            player.inDialogue = true;
+            displayDialogue("This is my first project", () => (player.inDialogue = false));
+        })
+        
+       
+    })
+
+    player.onCollideEnd("player", "projects", () => {
+        
+    });
+
+    
+
     k.onCollide("player", "github", () => {
         player.inDialogue = true;
-        displayDialogue("Here is my GitHub link: https://github.com/Borna1103", () => (player.inDialogue = false));
+        displayDialogue(`If you want to check some code out you're welcome to peep around my github 🧑‍💻 => <a href="https://github.com/Borna1103" target="_blank">GitHub</a>`, () => (player.inDialogue = false));
     })
     k.onCollide("player", "linkdin", () => {
         player.inDialogue = true;
-        displayDialogue("Here is my Linkdin link: https://www.linkedin.com/in/borna-hemmaty/", () => (player.inDialogue = false));
+        displayDialogue(`Add me on my socials! I would love to connect 🙂 => <a href="https://www.linkedin.com/in/borna-hemmaty/" target="_blank">LinkedIn</a>`, () => (player.inDialogue = false));
+    })
+
+    k.onCollide("player", "portfolio", () => {
+        player.inDialogue = true;
+        displayDialogue(`If you want to go check out my other projects without having to jump around, feel free to go check out my web portfolio here 😁 => <a href="https://borna1103.github.io/Borna/" target="_blank">Portfolio</a>`, () => (player.inDialogue = false));
     })
 
     // Controlls

@@ -25,3 +25,12 @@ k.loadSprite("player", "./public/Enemies.png" , {
         "runLeft" : {from: 33, to: 28, loop: true, speed: 8},
     }
 });
+
+// Npc Character Sprite
+k.loadSprite("bee", "./public/Enemies.png" , { 
+    sliceX: 14,
+    sliceY: 24,
+    anims: {
+        "idle" : {from: 252, to: 255, loop: true, speed: 8},
+    }
+});
