@@ -138,7 +138,7 @@ k.scene("main", async () => {
     })
 
     k.onCollide("player", "projects", () => {
-        k.onKeyPress("e", () => {
+        const unsub = k.onKeyPress("e", () => {
             player.inDialogue = true;
             displayDialogue("This is my first project", () => (player.inDialogue = false));
         })
@@ -147,7 +147,7 @@ k.scene("main", async () => {
     })
 
     player.onCollideEnd("player", "projects", () => {
-        
+        unsub()
     });
 
     
