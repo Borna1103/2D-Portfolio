@@ -109,18 +109,22 @@ k.scene("main", async () => {
     
     // Camera Position
     k.onUpdate(() => {
-        if(player.pos.x <= 960 - 500){
-            k.camPos(window.innerWidth/2, 1000);
-        }
-        else if (player.pos.x >= (1600  - 490) * scaleFactor) {
-        
-            k.camPos(1600 * scaleFactor - window.innerWidth / 2, 1000);
-        }
-        else{
-            k.camPos(player.pos.x + window.innerWidth/2 - 450, 1000);
-        }
 
+        const mapWidth = 1600 * scaleFactor; 
+        const halfScreen = window.innerWidth / 2;
 
+        if (player.pos.x <= halfScreen) {
+            // Left edge of the map
+            k.camPos(halfScreen, 1000);
+        }
+        else if (player.pos.x >= mapWidth - halfScreen) {
+            // Right edge of the map
+            k.camPos(mapWidth - halfScreen, 1000);
+        }
+        else {
+            // Normal follow
+            k.camPos(player.pos.x, 1000);
+        }
     });
 
     // Interactions 
