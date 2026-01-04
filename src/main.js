@@ -26,7 +26,7 @@ k.scene("main", async () => {
         k.sprite("player", {anim: "idle"}),
         k.body(),
         k.area(),
-        k.pos(25 * scaleFactor, 200* scaleFactor),
+        k.pos(20, 1000),
         k.scale(scaleFactor),
         {
             speed: 250,
@@ -39,11 +39,19 @@ k.scene("main", async () => {
 
     const npc = k.make([
         k.sprite("bee", {anim: "idle"}),
-        k.pos(0, 400),
+        k.pos(0, 1000),
         k.scale(scaleFactor),
         "bee"
     ]) 
 
+    const bird = k.make([
+        k.sprite("bird", {anim: "idle"}),
+        k.pos(1600 * scaleFactor + 100, 650),
+        k.scale(scaleFactor),
+        "bird"
+    ]) 
+
+    bird.flipX = true;
     npc.flipX = true;
 
     // const wKey = map.add([
@@ -53,9 +61,7 @@ k.scene("main", async () => {
     //     "wKey",
     // ])
 
-   
-
-
+    k.add(bird)
     // Bounderies Set Up
     for (const layer of layers) {
         
@@ -106,30 +112,60 @@ k.scene("main", async () => {
     }
 
     
-    
+    const birdSpeed = 200
     // Camera Position
     k.onUpdate(() => {
 
         const mapWidth = 1600 * scaleFactor; 
         const halfScreen = window.innerWidth / 2;
-
+        let targetY = 1000
+        let targetX;
         if (player.pos.x <= halfScreen) {
             // Left edge of the map
-            k.camPos(halfScreen, 1000);
+            targetX = halfScreen
         }
         else if (player.pos.x >= mapWidth - halfScreen) {
             // Right edge of the map
-            k.camPos(mapWidth - halfScreen, 1000);
+            targetX = mapWidth - halfScreen
         }
         else {
             // Normal follow
-            k.camPos(player.pos.x, 1000);
+            targetX = player.pos.x
+        }
+
+        // If camTarget is set (death lerp)
+        if(camTarget){
+            // Lerp towards camTarget
+            let lerpedX = k.lerp(k.camPos().x, camTarget.x, camLerpSpeed);
+            let lerpedY = k.lerp(k.camPos().y, camTarget.y, camLerpSpeed);
+            k.camPos(lerpedX, lerpedY);
+
+            // Stop lerping when close enough
+            if(Math.abs(lerpedX - camTarget.x) < 1 && Math.abs(lerpedY - camTarget.y) < 1){
+                camTarget = null; // done lerping
+            }
+
+        } else {
+            // Normal camera
+            k.camPos(targetX, targetY);
+        }
+
+        // bird
+        bird.pos.x -= birdSpeed * k.dt();
+
+        // if bird goes off the left edge, reset to the right
+        if (bird.pos.x < -50) { // -50 so it fully leaves the screen
+            bird.pos.x = 1600 * scaleFactor + 100;
         }
     });
+
+    let camTarget = null;
+    let camLerpSpeed = 0.2;
 
     // Interactions 
     k.onCollide("player", "void", () => {
         player.pos = spawnpoint;
+        camTarget = k.vec2(window.innerWidth / 2, 1000);
     })
 
     
@@ -223,7 +259,8 @@ k.scene("main", async () => {
     });
 
     k.onKeyPress("r" , () => {
-        k.go("main");
+        player.pos = spawnpoint;
+        camTarget = k.vec2(window.innerWidth / 2, 1000);
     });
 
     k.onKeyRelease("a",() => {

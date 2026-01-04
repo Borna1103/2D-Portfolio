@@ -34,3 +34,11 @@ k.loadSprite("bee", "./public/Enemies.png" , {
         "idle" : {from: 252, to: 255, loop: true, speed: 8},
     }
 });
+
+k.loadSprite("bird","./public/Enemies.png", {
+    sliceX: 14,
+    sliceY: 24,
+    anims: {
+        "idle" : {from: 308, to: 311, loop: true, speed: 8},
+    }
+})
