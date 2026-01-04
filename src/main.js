@@ -110,14 +110,14 @@ k.scene("main", async () => {
     // Camera Position
     k.onUpdate(() => {
         if(player.pos.x <= 960 - 500){
-            k.camPos(window.innerWidth/2, 480);
+            k.camPos(window.innerWidth/2, 1000);
         }
         else if (player.pos.x >= (1600  - 490) * scaleFactor) {
         
-            k.camPos(1600 * scaleFactor - window.innerWidth / 2, 480);
+            k.camPos(1600 * scaleFactor - window.innerWidth / 2, 1000);
         }
         else{
-            k.camPos(player.pos.x + window.innerWidth/2 - 450, 480);
+            k.camPos(player.pos.x + window.innerWidth/2 - 450, 1000);
         }
 
 
@@ -138,7 +138,7 @@ k.scene("main", async () => {
     })
 
     k.onCollide("player", "projects", () => {
-        const unsub = k.onKeyPress("e", () => {
+        k.onKeyPress("e", () => {
             player.inDialogue = true;
             displayDialogue("This is my first project", () => (player.inDialogue = false));
         })
@@ -147,7 +147,7 @@ k.scene("main", async () => {
     })
 
     player.onCollideEnd("player", "projects", () => {
-        unsub()
+        
     });
 
     
