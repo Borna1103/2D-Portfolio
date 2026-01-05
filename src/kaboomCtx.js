@@ -6,4 +6,4 @@ export const k = kaboom({
     canvas: document.getElementById("game")
 })
 
-await k.loadFont("monogram", "/monogram.ttf");
+k.loadFont("monogram", "/monogram.ttf");
