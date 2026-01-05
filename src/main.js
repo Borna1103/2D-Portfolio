@@ -9,7 +9,7 @@ import { setInteractions } from "./interactions.js";
 
 
 k.scene("main", async () => {
-    const mapData = await (await fetch("/map.json")).json();
+    const mapData = await (await fetch("public/map.json")).json();
     const layers = mapData.layers;
     var spawnpoint = k.vec2(75,1071);
     Camera.initializeTracker()

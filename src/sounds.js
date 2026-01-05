@@ -1,7 +1,7 @@
 import { k } from "./kaboomCtx.js";
 
-k.loadSound("walkingOnGrass", "/walkingOnGrass.wav");
+k.loadSound("walkingOnGrass", "public/walkingOnGrass.wav");
 
-k.loadSound("walkingOnPavement", "/walkingOnPavement.wav");
+k.loadSound("walkingOnPavement", "public/walkingOnPavement.wav");
 
-k.loadSound("jump", "/jump.mp3");
+k.loadSound("jump", "public/jump.mp3");
