@@ -3,7 +3,7 @@ import { k } from "./kaboomCtx.js";
 import "./sprites.js";
 import "./sounds.js";
 import Camera from "./camera.js";
-import { player, bird, bee } from "./npc.js"
+import { player, bird, bee, github, linkedin, exclamationWelcome, exclamationBee, slime } from "./npc.js"
 import { setInteractions } from "./interactions.js";
 
 
@@ -43,38 +43,61 @@ k.scene("main", async () => {
         // Positions Spawn Reletive to the Screen
         else if (layer.name == "interactable") {
             for (const entity of layer.objects) {
-                if (entity.name == "spawnpoint") {
-                    player.pos = k.vec2(
-                        (map.pos.x + entity.x) * scaleFactor,
-                        (map.pos.y + entity.y) * scaleFactor
-                    );
-                    
-                }
-                else if (entity.name == "projects")
-                {
-                    bee.pos = k.vec2(
-                        (map.pos.x + entity.x) * scaleFactor,
-                        (map.pos.y + entity.y) * scaleFactor
-                    )
 
-                    map.add([
-                        k.area({
-                            shape: new k.Rect(k.vec2(0), entity.width, entity.height),
-                        }),
-                        k.pos(entity.x, entity.y),
-                        entity.name
-                    ])
-                    
+                switch (entity.name) {
+                    case "spawnpoint":
+                         player.pos = k.vec2(
+                            (map.pos.x + entity.x) * scaleFactor,
+                            (map.pos.y + entity.y) * scaleFactor
+                        );
+
+                        slime.pos = k.vec2(
+                            (map.pos.x + entity.x) * scaleFactor,
+                            (map.pos.y + entity.y) * scaleFactor
+                        );
+                        break;
+                    case "projects":
+                        bee.pos = k.vec2(
+                            (map.pos.x + entity.x) * scaleFactor,
+                            (map.pos.y + entity.y) * scaleFactor
+                        )
+                        
+                        exclamationBee.pos = k.vec2(
+                            (map.pos.x + entity.x - 2) * scaleFactor,
+                            (map.pos.y + entity.y - 13) * scaleFactor
+                        )
+                        break;
+                    case "github":
+                        github.pos = k.vec2(
+                            (map.pos.x + entity.x + 1) * scaleFactor,
+                            (map.pos.y + entity.y - 40) * scaleFactor
+                        )
+                        break;
+                    case "linkedin":
+                        linkedin.pos = k.vec2(
+                            (map.pos.x + entity.x + 1) * scaleFactor,
+                            (map.pos.y + entity.y - 40) * scaleFactor
+                        )
+                        break;
+                    case "welcome":
+                        exclamationWelcome.pos = k.vec2(
+                            (map.pos.x + entity.x + 2) * scaleFactor,
+                            (map.pos.y + entity.y - 15) * scaleFactor
+                        )
+                        break;
+                    default:
+
                 }
-                else{
-                    map.add([
-                        k.area({
-                            shape: new k.Rect(k.vec2(0), entity.width, entity.height),
-                        }),
-                        k.pos(entity.x, entity.y),
-                        entity.name
-                    ])  
-                }
+
+                
+                map.add([
+                    k.area({
+                        shape: new k.Rect(k.vec2(0), entity.width, entity.height),
+                    }),
+                    k.pos(entity.x, entity.y),
+                    entity.name
+                ])  
+                
             }
         }
     }
@@ -82,6 +105,11 @@ k.scene("main", async () => {
     k.add(player);
     k.add(bird);
     k.add(bee);
+    k.add(linkedin);
+    k.add(github);
+    k.add(exclamationWelcome)
+    k.add(exclamationBee)
+    k.add(slime)
     k.wait(0.1, () => {
         player.pos = spawnpoint
     });

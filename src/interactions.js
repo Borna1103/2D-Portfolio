@@ -35,6 +35,7 @@ export function setInteractions()
     });
 
     k.onCollide("player", "bird", () => {
+        if (tooltip.has("bird")) return;
         tooltip.set("bird", createTooltip("Move out of the way!", bird, 250, 50))
     })
 
