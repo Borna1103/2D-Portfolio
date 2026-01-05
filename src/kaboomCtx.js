@@ -5,3 +5,5 @@ export const k = kaboom({
     touchToMouse: true,
     canvas: document.getElementById("game")
 })
+
+await k.loadFont("monogram", "/monogram.ttf");

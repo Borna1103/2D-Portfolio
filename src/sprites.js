@@ -4,7 +4,7 @@ import { k } from "./kaboomCtx.js";
 
 // Map Sprite
 
-k.loadSprite("map",  "./public/map.png");
+k.loadSprite("map",  "/map.png");
 // WASD Controlls
 // k.loadSprite("wKey", "./wasd.png", {
 //     sliceX: 12,
@@ -16,7 +16,7 @@ k.loadSprite("map",  "./public/map.png");
 
 
 // Main Character Sprite
-k.loadSprite("player", "./public/Enemies.png" , { 
+k.loadSprite("player", "/Enemies.png" , { 
     sliceX: 14,
     sliceY: 24,
     anims: {
@@ -27,7 +27,7 @@ k.loadSprite("player", "./public/Enemies.png" , {
 });
 
 // Npc Character Sprite
-k.loadSprite("bee", "./public/Enemies.png" , { 
+k.loadSprite("bee", "/Enemies.png" , { 
     sliceX: 14,
     sliceY: 24,
     anims: {
@@ -35,7 +35,7 @@ k.loadSprite("bee", "./public/Enemies.png" , {
     }
 });
 
-k.loadSprite("bird","./public/Enemies.png", {
+k.loadSprite("bird","/Enemies.png", {
     sliceX: 14,
     sliceY: 24,
     anims: {
