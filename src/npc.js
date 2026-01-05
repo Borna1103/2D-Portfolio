@@ -3,19 +3,19 @@ import { k } from "./kaboomCtx.js";
 import "./sprites.js";
 
 export const player = k.make([
-        k.sprite("player", {anim: "idle"}),
-        k.body(),
-        k.area(),
-        k.pos(20, 1000),
-        k.scale(scaleFactor),
-        {
-            speed: 250,
-            direction: "right",
-            inDialogue: false
-        },
-        k.setGravity(1900),
-        "player",
-    ])
+    k.sprite("player", {anim: "idle"}),
+    k.body(),
+    k.area(),
+    k.pos(20, 1000),
+    k.scale(scaleFactor),
+    {
+        speed: 250,
+        direction: "right",
+        inDialogue: false
+    },
+    k.setGravity(1900),
+    "player",
+])
 
 
 export const bee = k.make([
@@ -32,6 +32,15 @@ export const bird = k.make([
     k.scale(scaleFactor),
     "bird"
 ]) 
+
+const birdSpeed = 200
+
+bird.onUpdate(() => {
+    bird.pos.x -= birdSpeed * k.dt();
+    if (bird.pos.x < -50) { 
+        bird.pos.x = 1600 * scaleFactor + 100;
+    }
+});
 
 bird.flipX = true;
 bee.flipX = true;

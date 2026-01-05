@@ -87,16 +87,8 @@ k.scene("main", async () => {
     });
     
     
-    const birdSpeed = 200
-    k.onUpdate(() => {
-        // bird
-        bird.pos.x -= birdSpeed * k.dt();
-
-        // if bird goes off the left edge, reset to the right
-        if (bird.pos.x < -50) { // -50 so it fully leaves the screen
-            bird.pos.x = 1600 * scaleFactor + 100;
-        }
-    });
+    
+    
 
     
 });
