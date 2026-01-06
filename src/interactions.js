@@ -2,7 +2,7 @@ import { scaleFactor } from "./constants.js";
 import { k } from "./kaboomCtx.js";
 import Camera from "./camera.js"
 import { displayDialogue, createTooltip } from "./utils.js";
-import { player, bird, bee } from "./npc.js"
+import { player, bird, bee, slime, fish } from "./npc.js"
 
 export function setInteractions()
 {
@@ -34,15 +34,42 @@ export function setInteractions()
         tooltip.delete("projects")
     });
 
+     k.onCollide("player", "skills", () => {
+        tooltip.set("skills", createTooltip("Some things I picked up \n along the way...", slime, 400, 150))
+    })
+
+    k.onCollideEnd("player", "skills", () => {
+        tooltip.get("skills").destroy()
+        tooltip.delete("skills")
+    });
+
     k.onCollide("player", "bird", () => {
         if (tooltip.has("bird")) return;
         tooltip.set("bird", createTooltip("Move out of the way!", bird, 250, 50))
     })
 
     k.onCollideEnd("player", "bird", () => {
+        const temp = tooltip.get("bird")
+        if (!temp) return;
         k.wait(2, () => {
-            tooltip.get("bird").destroy()
+            temp.destroy()
             tooltip.delete("bird")
+        })
+        
+    });
+
+    k.onCollide("player", "fish", () => {
+        if (tooltip.has("fish")) return;
+        tooltip.set("fish", createTooltip("Splash!", fish, 200, 50))
+    })
+
+    k.onCollideEnd("player", "fish", () => {
+        const temp = tooltip.get("fish")
+        if (!temp) return;
+        k.wait(2, () => {
+            
+            temp.destroy()
+            tooltip.delete("fish")
         })
         
     });

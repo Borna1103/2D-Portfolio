@@ -55,3 +55,69 @@ k.loadSprite("bird","public/Enemies.png", {
         "idle" : {from: 308, to: 311, loop: true, speed: 8},
     }
 })
+
+k.loadSprite("fish","public/Enemies.png", {
+    sliceX: 14,
+    sliceY: 24,
+    anims: {
+        "idle" : {from: 280, to: 285, loop: true, speed: 8},
+    }
+})
+
+k.loadSprite("W","public/keyboard/W.png", {
+    sliceX: 3,
+    sliceY: 1,
+    anims: {
+        "idle" : {from: 0, to: 2, loop: true, speed: 4},
+    }
+})
+
+k.loadSprite("A","public/keyboard/A.png", {
+    sliceX: 3,
+    sliceY: 1,
+    anims: {
+        "idle" : {from: 0, to: 2, loop: true, speed: 4},
+    }
+})
+
+
+k.loadSprite("S","public/keyboard/S.png", {
+    sliceX: 3,
+    sliceY: 1,
+    anims: {
+        "idle" : 0,
+    }
+})
+
+
+k.loadSprite("D","public/keyboard/D.png", {
+    sliceX: 3,
+    sliceY: 1,
+    anims: {
+        "idle" : {from: 0, to: 2, loop: true, speed: 4},
+    }
+})
+
+k.loadSprite("E","public/keyboard/E.png", {
+    sliceX: 3,
+    sliceY: 1,
+    anims: {
+        "idle" : {from: 0, to: 2, loop: true, speed: 4},
+    }
+})
+
+k.loadSprite("R","public/keyboard/R.png", {
+    sliceX: 3,
+    sliceY: 1,
+    anims: {
+        "idle" : {from: 0, to: 2, loop: true, speed: 4},
+    }
+})
+
+k.loadSprite("Space","public/keyboard/SPACE.png", {
+    sliceX: 3,
+    sliceY: 1,
+    anims: {
+        "idle" : {from: 0, to: 2, loop: true, speed: 4},
+    }
+})

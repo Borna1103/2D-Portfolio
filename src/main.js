@@ -3,7 +3,7 @@ import { k } from "./kaboomCtx.js";
 import "./sprites.js";
 import "./sounds.js";
 import Camera from "./camera.js";
-import { player, bird, bee, github, linkedin, exclamationWelcome, exclamationBee, slime } from "./npc.js"
+import { player, bird, bee, github, linkedin, exclamationWelcome, exclamationBee, exclamationSlime, slime, fish, keys } from "./npc.js"
 import { setInteractions } from "./interactions.js";
 
 
@@ -49,12 +49,7 @@ k.scene("main", async () => {
                          player.pos = k.vec2(
                             (map.pos.x + entity.x) * scaleFactor,
                             (map.pos.y + entity.y) * scaleFactor
-                        );
-
-                        slime.pos = k.vec2(
-                            (map.pos.x + entity.x) * scaleFactor,
-                            (map.pos.y + entity.y) * scaleFactor
-                        );
+                        );              
                         break;
                     case "projects":
                         bee.pos = k.vec2(
@@ -85,6 +80,17 @@ k.scene("main", async () => {
                             (map.pos.y + entity.y - 15) * scaleFactor
                         )
                         break;
+                    case "skills":
+                        slime.pos = k.vec2(
+                            (map.pos.x + entity.x) * scaleFactor,
+                            (map.pos.y + entity.y + 1) * scaleFactor
+                        );
+
+                        exclamationSlime.pos = k.vec2(
+                            (map.pos.x + entity.x) * scaleFactor,
+                            (map.pos.y + entity.y - 10) * scaleFactor
+                        );
+                        break;
                     default:
 
                 }
@@ -110,15 +116,14 @@ k.scene("main", async () => {
     k.add(exclamationWelcome)
     k.add(exclamationBee)
     k.add(slime)
+    k.add(exclamationSlime)
+    k.add(fish)
+    k.add(keys)
+    
     k.wait(0.1, () => {
         player.pos = spawnpoint
     });
-    
-    
-    
-    
-
-    
+        
 });
 
 k.go("main");

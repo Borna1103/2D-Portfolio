@@ -526,6 +526,17 @@
                  "width":22.4782608695652,
                  "x":833.130434782609,
                  "y":255.913043478261
+                }, 
+                {
+                 "height":16.5,
+                 "id":61,
+                 "name":"skills",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16.25,
+                 "x":575.5,
+                 "y":367.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -534,7 +545,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":61,
+ "nextobjectid":63,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
