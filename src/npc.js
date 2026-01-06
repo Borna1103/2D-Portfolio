@@ -193,12 +193,12 @@ bird.onUpdate(() => {
 
 fish.onUpdate(() => {
    
-    fish.pos.y = fish.pos.y - Math.sin(k.time() * 1) * 2
-    if ( Math.sin(k.time()) > 0.50)
+    fish.pos.y = 550 * scaleFactor + Math.sin(k.time() * 1) * 500
+    if ( Math.sin(k.time()) > 0.99)
     {
         fish.flipY = false
     }
-    else if (Math.sin(k.time()) < -0.3)
+    else if (Math.sin(k.time()) < -0.99)
     {
         fish.flipY = true
     }
