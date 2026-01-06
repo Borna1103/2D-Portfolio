@@ -80,7 +80,7 @@ export function setInteractions()
         player.inDialogue = true;
         displayDialogue(`If you want to check some code out you're welcome to peep around my github 🧑‍💻 => <a href="https://github.com/Borna1103" target="_blank">GitHub</a>`, () => (player.inDialogue = false));
     })
-    k.onCollide("player", "linkdin", () => {
+    k.onCollide("player", "linkedin", () => {
         player.inDialogue = true;
         displayDialogue(`Add me on my socials! I would love to connect 🙂 => <a href="https://www.linkedin.com/in/borna-hemmaty/" target="_blank">LinkedIn</a>`, () => (player.inDialogue = false));
     })
