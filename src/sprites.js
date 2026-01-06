@@ -38,6 +38,7 @@ k.loadSprite("bee", "public/Enemies.png" , {
 k.loadSprite("linkedin", "public/LinkedIn.png")
 k.loadSprite("github", "public/Github.png")
 k.loadSprite("exclamation", "public/Exclamation.png")
+k.loadSprite("logo", "public/Logo.png")
 
 k.loadSprite("slime", "public/Enemies.png", {
     sliceX: 14,
@@ -102,7 +103,7 @@ k.loadSprite("E","public/keyboard/E.png", {
     sliceX: 3,
     sliceY: 1,
     anims: {
-        "idle" : {from: 0, to: 2, loop: true, speed: 4},
+        "idle" : {from: 0, to: 2, loop: true, speed: 3},
     }
 })
 
@@ -110,7 +111,7 @@ k.loadSprite("R","public/keyboard/R.png", {
     sliceX: 3,
     sliceY: 1,
     anims: {
-        "idle" : {from: 0, to: 2, loop: true, speed: 4},
+        "idle" : {from: 0, to: 2, loop: true, speed: 2},
     }
 })
 

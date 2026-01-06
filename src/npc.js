@@ -31,6 +31,12 @@ export const linkedin = k.make([
 ])
 
 
+export const logo = k.make([
+    k.sprite("logo"),
+    k.pos(0,0),
+    k.scale(scaleFactor)
+])
+
 export const bee = k.make([
     k.sprite("bee", {anim: "idle"}),
     k.pos(0, 1000),
@@ -92,6 +98,7 @@ keys.add([
     k.sprite("W", {anim: "idle"}),
     k.pos(spacing, 0),
     k.scale(2),
+    k.z(1)
 ])
 
 // A (left)
@@ -99,6 +106,7 @@ keys.add([
     k.sprite("A" , {anim: "idle"}),
     k.pos(0, spacing),
     k.scale(2),
+    k.z(1)
 ])
 
 // S (middle)
@@ -106,6 +114,7 @@ keys.add([
     k.sprite("S"),
     k.pos(spacing, spacing),
     k.scale(2),
+    k.z(1)
 ])
 
 // D (right)
@@ -113,6 +122,7 @@ keys.add([
     k.sprite("D", {anim: "idle"}),
     k.pos(spacing * 2, spacing),
     k.scale(2),
+    k.z(1)
 ])
 
 // keys.add([
@@ -126,19 +136,48 @@ keys.add([
     k.sprite("E", {anim: "idle"}),
     k.pos(spacing * 4, 0),
     k.scale(2),
+    k.z(1)
 ])
 
 keys.add([
     k.sprite("R", {anim: "idle"}),
     k.pos(spacing * 6, 0),
     k.scale(2),
+    k.z(1)
 ])
 
 keys.add([
-        k.text("Move", { size: 16, align: "center", width: 50 }),
-        k.pos(spacing, -spacing), // adjust x/y so it centers nicely
-        k.color(255, 255, 255)
-    ]);
+    k.text("Move", { size: 24, align: "center", width: 50 , font: "monogram",}),
+    k.pos(spacing - 5, -spacing), // adjust x/y so it centers nicely
+    k.color(1, 2, 3),
+    k.z(2)
+]);
+
+
+
+keys.add([
+    k.text("Interact", { size: 24, align: "center", width: 100 , font: "monogram"}),
+    k.pos((spacing * 3) + 10, -spacing), // adjust x/y so it centers nicely
+    k.color(1, 2, 3),
+    k.z(2)
+]);
+
+keys.add([
+    k.text("Restart", { size: 24, align: "center", width: 100 , font: "monogram"}),
+    k.pos((spacing * 5) + 10, -spacing), // adjust x/y so it centers nicely
+    k.color(1, 2, 3),
+    k.z(2)
+]);
+
+keys.add([
+    k.rect(350, 150),
+    k.pos(-20, -spacing - 10),
+    k.outline(2),
+    k.z(0),
+    k.opacity(0.9)
+])
+
+
 
 
 const birdSpeed = 200
@@ -153,7 +192,8 @@ bird.onUpdate(() => {
 
 
 fish.onUpdate(() => {
-    fish.pos.y = fish.pos.y - Math.sin(k.time()) * 2
+   
+    fish.pos.y = fish.pos.y - Math.sin(k.time() * 1) * 2
     if ( Math.sin(k.time()) > 0.50)
     {
         fish.flipY = false
@@ -166,6 +206,10 @@ fish.onUpdate(() => {
 
 github.onUpdate(() => {
     github.pos.y = github.pos.y - Math.sin(k.time() * 6) * 0.05
+})
+
+logo.onUpdate(() => {
+    logo.pos.y = logo.pos.y - Math.sin(k.time() * 6) * 0.05
 })
 
 linkedin.onUpdate(() => {

@@ -21,7 +21,7 @@ export function displayDialogue(text, onDisplayEnd) {
     }
 
     function onKeyDown(e) {
-        if (e.key === "Escape" || e.key === "e") {
+        if (e.key === "Escape" || e.key === "e" || e.key === "E") {
             onCloseBtnClick();
         }
     }
