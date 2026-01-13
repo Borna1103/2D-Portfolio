@@ -39,6 +39,15 @@ k.loadSprite("linkedin", "public/LinkedIn.png")
 k.loadSprite("github", "public/Github.png")
 k.loadSprite("exclamation", "public/Exclamation.png")
 k.loadSprite("logo", "public/Logo.png")
+k.loadSprite("redstone", "public/redstonesimulator.png")
+
+k.loadSprite("slime2", "public/Enemies.png", {
+    sliceX: 14,
+    sliceY: 24,
+    anims: {
+        "idle" : {from: 210, to: 217, loop: true, speed: 8},
+    }
+})
 
 k.loadSprite("slime", "public/Enemies.png", {
     sliceX: 14,

@@ -71,11 +71,22 @@ export const exclamationSlime= k.make([
     k.scale(scaleFactor)
 ])
 
+export const exit = k.make([
+    k.pos(0,0),
+    k.scale(scaleFactor)
+])
 export const slime = k.make([
     k.sprite("slime", {anim: "idle"}),
     k.pos(0,0),
     k.scale(scaleFactor),
     "slime"
+])
+
+export const slime2 = k.make([
+    k.sprite("slime2", {anim: "idle"}),
+    k.pos(0,0),
+    k.scale(scaleFactor),
+    "slime2"
 ])
 
 export const fish = k.make([
@@ -231,3 +242,4 @@ exclamationSlime.onUpdate(() => {
 slime.flipX = true;
 bird.flipX = true;
 bee.flipX = true;
+slime2.flipX = true;

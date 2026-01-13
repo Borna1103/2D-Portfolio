@@ -3,7 +3,7 @@ import { k } from "./kaboomCtx.js";
 import "./sprites.js";
 import "./sounds.js";
 import Camera from "./camera.js";
-import { player, bird, bee, github, linkedin, exclamationWelcome, exclamationBee, exclamationSlime, slime, fish, keys, logo } from "./npc.js"
+import { player, bird, bee, github, linkedin, exclamationWelcome, exclamationBee, exclamationSlime, slime, fish, keys, logo, slime2, exit } from "./npc.js"
 import { setInteractions } from "./interactions.js";
 
 
@@ -97,6 +97,18 @@ k.scene("main", async () => {
                             (map.pos.y + entity.y - 40) * scaleFactor
                         )
                         break;
+                    case "experience":
+                        slime2.pos = k.vec2(
+                            (map.pos.x + entity.x) * scaleFactor,
+                            (map.pos.y + entity.y) * scaleFactor
+                        )
+                        break;
+                    case "exit":
+                        exit.pos = k.vec2(
+                            (map.pos.x + entity.x - 150) * scaleFactor,
+                            (map.pos.y + entity.y + 10) * scaleFactor
+                        )
+                    break;
                     default:
 
                 }
@@ -126,6 +138,8 @@ k.scene("main", async () => {
     k.add(fish)
     k.add(keys)
     k.add(logo)
+    k.add(slime2)
+    k.add(exit)
     
     k.wait(0.1, () => {
         player.pos = spawnpoint
